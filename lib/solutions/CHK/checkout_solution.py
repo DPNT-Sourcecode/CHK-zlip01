@@ -122,10 +122,14 @@ class Basket:
         heapq.heapify(groups_in_basket)
 
         while len(groups_in_basket) > 3:
-            (a_val, a_sku, a_freq), (a_val, a_sku, a_freq), (a_val, a_sku, a_freq) \
+            (a_val, a_sku, a_freq), (b_val, b_sku, b_freq), (c_val, c_sku, c_freq) \
                 = heapq.heappop(), heapq.heappop(), heapq.heappop()
-            if
 
+            if a_freq == 0 or b_freq == 0 or c_freq == 0:
+                break
+
+        for _, sku, freq in groups_in_basket:
+            basket_map[sku] = freq
 
         return total_offer, basket_map
 
@@ -136,6 +140,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

@@ -118,13 +118,13 @@ class Basket:
 
         priority.sort(key=lambda x: x[1], reverse=True)
 
-        prioritySkuList = [
+        prioritySkuList = "".join([
             sku * basket_map[sku]
             for sku, _ in priority
-        ]
+        ])
         groupedSkuList = [
             prioritySkuList[i: i + 3]
-            for i in range(0, len(prioritySkuList) - 3)
+            for i in range(0, len(prioritySkuList), 3)
         ]
 
         total_offer = len(groupedSkuList) * 45
@@ -142,3 +142,4 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+

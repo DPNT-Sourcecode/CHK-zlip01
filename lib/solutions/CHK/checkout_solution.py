@@ -1,3 +1,4 @@
+# noinspection PyShadowingBuiltins,PyUnusedLocal
 def checkout(sku_string: str) -> int:
     if sku_string == "" : return 0
     
@@ -44,4 +45,5 @@ def checkout(sku_string: str) -> int:
     return basket_total
 
     
+
 

@@ -113,7 +113,7 @@ class Basket:
     def _applyGroupOffers(self, basket_map):
         itemGroups = []
         priority = [[sku, self.sku_values[sku]]
-                    for sku in basket_map.item()
+                    for sku in basket_map.keys()
                     if sku in self.group_offers
                     ]
 
@@ -121,9 +121,10 @@ class Basket:
 
         prioritySkuList = [
             sku * freq
-            for freq in basket_map[sku]
             for sku, _ in priority
+            for freq in basket_map[sku]
         ]
+        a = prioritySkuList
 
 
     def getValue(self):
@@ -133,6 +134,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

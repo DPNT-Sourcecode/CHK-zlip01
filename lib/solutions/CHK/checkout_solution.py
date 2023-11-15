@@ -38,9 +38,10 @@ class Basket:
 
         if "E" in basket_map:
             freq = basket_map["E"]
-            if freq > 2:
-                
-
+            if freq >= 2:
+                cnt = freq // 2
+                if "B" in basket_map:
+                    basket_map["B"] -= cnt
 
         basket_total = 0
 
@@ -75,3 +76,4 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+

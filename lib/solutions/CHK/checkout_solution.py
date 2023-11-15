@@ -1,15 +1,21 @@
 def checkout(sku_string: str) -> int:
-    
+    valid_sku_identifiers = set(['A', 'B', 'C', 'D'])
+    sku_string = sku_string.upper()
+
     # Get the frequency of all the unique SKU identifiers
     # in the basket, to be able to calculate the total
     # basket value efficiently 
-
+    
+    
     basket_map = {}
-    for sku in sku_string:
-        if sku in basket_map:
-            basket_map[sku] += 1
+    
+    for sku_identifier in sku_string:
+        if sku_identifier not in valid_sku_identifiers:
+            return -1
+        if sku_identifier in basket_map:
+            basket_map[sku_identifier] += 1
         else:
-            basket_map[sku] = 1
+            basket_map[sku_identifier] = 1
     
     # Maps the SKU identifiers to their values
     value_map = {
@@ -23,10 +29,18 @@ def checkout(sku_string: str) -> int:
 
     for sku_identifier, frequency in basket_map.items():
         if sku_identifier == "A":
-            basket_map += 
+            if frequency >= 3:
+                basket_total += 130
+                frequency -= 3
+
+            basket_total += (frequency * 
         elif sku_identifier == "B":
-            basket_map += 
-        elsE"
-        
+            basket_total += 
+        else:
+            basket_total += 
+    
+
+    return basket_total
+
     
 

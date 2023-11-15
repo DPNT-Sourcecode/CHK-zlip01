@@ -6,7 +6,6 @@ def checkout(sku_string: str) -> int:
     # in the basket, to be able to calculate the total
     # basket value efficiently 
     
-    
     basket_map = {}
     
     for sku_identifier in sku_string:
@@ -39,7 +38,6 @@ def checkout(sku_string: str) -> int:
        
         basket_total += frequency * value_map[sku_identifier]
     
-
     return basket_total
 
     

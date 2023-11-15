@@ -119,7 +119,7 @@ class Basket:
 
         total_offer = 0
         groups_in_basket.sort(key=lambda x: x[2], reverse=True)
-        
+
 
         return total_offer, basket_map
 
@@ -130,6 +130,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

@@ -1,17 +1,17 @@
 # noinspection PyShadowingBuiltins,PyUnusedLocal
 def checkout(sku_string: str) -> int:
-    if sku_string == "" : return 0
-    
-    
-    valid_sku_identifiers = set(['A', 'B', 'C', 'D'])
+    if sku_string == "":
+        return 0
+
+    valid_sku_identifiers = {'A', 'B', 'C', 'D'}
     sku_string = sku_string.upper()
 
     # Get the frequency of all the unique SKU identifiers
     # in the basket, to be able to calculate the total
     # basket value efficiently 
-    
+
     basket_map = {}
-    
+
     for sku_identifier in sku_string:
         if sku_identifier not in valid_sku_identifiers:
             return -1
@@ -19,10 +19,10 @@ def checkout(sku_string: str) -> int:
             basket_map[sku_identifier] += 1
         else:
             basket_map[sku_identifier] = 1
-    
+
     # Maps the SKU identifiers to their values
     value_map = {
-        "A" : 50,
+        "A": 50,
         "B": 30,
         "C": 20,
         "D": 15
@@ -39,9 +39,7 @@ def checkout(sku_string: str) -> int:
             if frequency >= 2:
                 basket_total += 45
                 frequency -= 2
-       
-        basket_total += frequency * value_map[sku_identifier]
-    
-    return basket_total
 
-    
+        basket_total += frequency * value_map[sku_identifier]
+
+    return basket_total

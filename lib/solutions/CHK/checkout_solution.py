@@ -19,12 +19,16 @@ class Basket:
         }
 
         self.sku_offers = {
-            "A": [(5, 200), (3, 130)],
-            "B": [(2, 45)],
+            "A": [(5, 200), (3, 130)], "B": [(2, 45)],
+            "H": [(5, 45), (10, 80)], "K": [(2, 150)],
+            "P": [(5, 200)], "Q": [(3, 80)],
+            "V": [(2, 90), (3, 130)]
         }
+
         self.reductive_offers = {
-            "E": [(2, ("B", 1))],
-            "F": [(2, ("F", 1))]
+            "E": [(2, ("B", 1))], "F": [(2, ("F", 1))],
+            "N": [(3, ("M", 1))], "R": [(3, ("Q", 1))],
+            "U": [(3, ("U", 1))]
         }
 
         self.basket_value = self._calculateBasketValue(sku_items)
@@ -107,5 +111,6 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 

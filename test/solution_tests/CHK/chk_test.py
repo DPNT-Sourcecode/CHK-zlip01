@@ -19,7 +19,7 @@ class CheckoutTests(TestCase):
         self.assertEqual(checkout('AAA'), 130)
 
     def test_chk_invalid_items(self):
-        self.assertEqual(checkout('R'), -1)
+        self.assertEqual(checkout('x'), -1)
 
     def test_chk_no_items(self):
         self.assertEqual(checkout(''), 0)
@@ -41,4 +41,5 @@ class CheckoutTests(TestCase):
 
     def test_chk_reductive_combo_offer(self):
         self.assertEqual(checkout('EEEEBB'), 160)
+
 

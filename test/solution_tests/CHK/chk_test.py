@@ -23,5 +23,3 @@ class CheckoutTests(TestCase):
 
     def test_chk_lowerCase_item(self):
         self.assertEqual(checkout('ABCd'), -1)
-
-

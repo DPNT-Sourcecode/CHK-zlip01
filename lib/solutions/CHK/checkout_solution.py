@@ -2,16 +2,26 @@
 
 class Basket:
     def __init__(self, sku_items: str):
-        self.offers = {
-            "A" : [(5, 200), ]
+        self.sku_values = {
+            "A": 50,
+            "B": 30,
+            "C": 20,
+            "D": 15,
+            "E": 40
         }
+
+        self.sku_offers = {
+            "A": [(5, 200), (3, 130)],
+            "B": [(2, 45)],
+            "E": [(2, self.sku_values["B"])]
+
+        }
+
         self.basket_value = self._calulateBasketValue(sku_items)
 
     def _calulateBasketValue(self, sku_items):
         if sku_items == "":
             return 0
-
-        valid_sku_identifiers = {'A', 'B', 'C', 'D'}
 
         # Get the frequency of all the unique SKU identifiers
         # in the basket, to be able to calculate the total
@@ -20,7 +30,8 @@ class Basket:
         basket_map = {}
 
         for sku_identifier in sku_items:
-            if sku_identifier not in valid_sku_identifiers:
+            # Not Valid SKU
+            if sku_identifier not in self.sku_values.keys():
                 return -1
             if sku_identifier in basket_map:
                 basket_map[sku_identifier] += 1
@@ -58,5 +69,3 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
-
-

@@ -78,8 +78,11 @@ class Basket:
                     if required_freq <= basket_map[reductive_sku]:
                         applied_sku, reduction = offer
                         if applied_sku == reductive_sku:
-                            if reduction + required_freq > basket_map[reductive_sku]:
-                                continue
+                            reduction = (
+                                basket_map[reductive_sku] //
+                                (required_freq + reduction)
+                            )
+
                         basket_map[applied_sku] -= reduction
 
         return basket_map
@@ -91,5 +94,6 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 

@@ -42,4 +42,10 @@ class CheckoutTests(TestCase):
     def test_chk_reductive_combo_offer(self):
         self.assertEqual(checkout('EEEEBB'), 160)
 
+    def test_chk_reductive_combo_offer_2(self):
+        self.assertEqual(checkout('AAAMMNNNNNNRRR'),
+                         130 + (6 * 40) + 150)
+
+
+
 

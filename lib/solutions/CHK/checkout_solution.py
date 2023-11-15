@@ -20,7 +20,7 @@ class Basket:
             "Y": 20, "Z": 21
         }
 
-        self.sku_offers = {
+        self.value_offers = {
             "A": [(5, 200), (3, 130)], "B": [(2, 45)],
             "H": [(5, 45), (10, 80)], "K": [(2, 120)],
             "P": [(5, 200)], "Q": [(3, 80)],
@@ -63,7 +63,7 @@ class Basket:
         basket_total, basket_map = self._applyGroupOffers(basket_map)
 
         for sku_identifier, frequency in basket_map.items():
-            if sku_identifier in self.sku_offers:
+            if sku_identifier in self.value_offers:
                 basket_total += self._calculateSkuOffer(sku_identifier, frequency)
             else:
                 basket_total += self.sku_values[sku_identifier] * frequency
@@ -72,7 +72,7 @@ class Basket:
 
     def _calculateSkuOffer(self, currSKU, currFreq):
         total_offer = 0
-        best_sku_offers = sorted(self.sku_offers[currSKU], key=lambda x: x[0], reverse=True)
+        best_sku_offers = sorted(self.value_offers[currSKU], key=lambda x: x[0], reverse=True)
 
         for offer_frequency, offer_value in best_sku_offers:
             if offer_frequency <= currFreq:
@@ -121,6 +121,7 @@ class Basket:
         groups_in_basket.sort(key=lambda x: x[2], reverse=True)
 
 
+
         return total_offer, basket_map
 
     def getValue(self):
@@ -130,7 +131,3 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
-
-
-
-

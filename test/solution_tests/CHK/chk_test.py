@@ -1,5 +1,6 @@
 from unittest import TestCase
-from solutions.CHK.checkout_solution import checkout
+from lib.solutions.CHK.checkout_solution import checkout
+
 
 class CheckoutTests(TestCase):
     def chk_single_item(self):
@@ -13,6 +14,6 @@ class CheckoutTests(TestCase):
 
     def chk_invalid_items(self):
         self.assertEqual(checkout('R'), -1)
-    
+
     def chk_no_items(self):
         self.assertEqual(checkout(''), 0)

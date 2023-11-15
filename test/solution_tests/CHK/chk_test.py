@@ -50,13 +50,14 @@ class CheckoutTests(TestCase):
         self.assertEqual(checkout('STX'), 45)
 
     def test_chk_group_offer_2(self):
-        self.assertEqual(checkout('STXYZ'), 37 + 45)
+        self.assertEqual(checkout('STXSTX'), 90)
 
     def test_chk_group_offer_3(self):
         self.assertEqual(checkout('XXSTZ'), 45 + (17 * 2))
 
     def test_chk_group_offer_4(self):
         self.assertEqual(checkout('SSS'), 45)
+
 
 
 

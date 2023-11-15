@@ -116,12 +116,8 @@ class Basket:
 
         for sku, freq in basket_map:
             if sku in self.group_offers:
-                groups_in_basket.append((sku, freq, self.sku_values[sku]))
-
-        if len(groups_in_basket) < 3:
-            return 0, basket_map
-        groups_in_basket.sort(key=lambda x: x[2], reverse=True)
-
+                if freq >= 3:
+                    
         return total_offer, basket_map
 
     def getValue(self):
@@ -131,6 +127,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

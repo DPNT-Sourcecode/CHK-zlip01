@@ -38,10 +38,8 @@ class Basket:
 
         if "E" in basket_map:
             freq = basket_map["E"]
-            if freq >= 2:
-                cnt = freq // 2
-                if "B" in basket_map:
-                    basket_map["B"] -= cnt
+            if freq >= 2 and "B" in basket_map:
+                basket_map["B"] -= freq // 2
 
         basket_total = 0
 
@@ -58,7 +56,7 @@ class Basket:
         best_sku_offers = sorted(self.sku_offers[currSKU], key=lambda x: x[0], reverse=True)
 
         for offer_frequency, offer_value in best_sku_offers:
-            if offer_frequency > currFreq:
+            if offer_frequency >= currFreq:
                 total_offer += (currFreq // offer_frequency) * offer_value
                 currFreq %= offer_frequency
             if currFreq == 0:
@@ -76,4 +74,5 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 

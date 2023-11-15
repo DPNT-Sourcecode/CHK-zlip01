@@ -32,12 +32,12 @@ def checkout(sku_string: str) -> int:
             if frequency >= 3:
                 basket_total += 130
                 frequency -= 3
-
-            basket_total += (frequency * 
         elif sku_identifier == "B":
-            basket_total += 
-        else:
-            basket_total += 
+            if frequency >= 2:
+                basket_total += 45
+                frequency -= 2
+       
+        basket_total += frequency * value_map[sku_identifier]
     
 
     return basket_total

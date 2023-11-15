@@ -55,7 +55,7 @@ class Basket:
         for offer_frequency, offer_value in best_sku_offers:
             if offer_frequency > currFreq:
                 total_offer += (currFreq // offer_frequency) * offer_value
-                currSKU %= offer_frequency
+                currFreq %= offer_frequency
 
         if currFreq > 0:
             total_offer += self.sku_values[currSKU]
@@ -69,6 +69,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

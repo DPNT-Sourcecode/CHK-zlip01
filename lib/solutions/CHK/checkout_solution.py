@@ -123,8 +123,8 @@ class Basket:
             for sku, _ in priority
         ])
         groupedSkuList = [
-            prioritySkuList[i: i + 3] if len(prioritySkuList[i: i + 3]) == 3
-            for i in range(0, len(prioritySkuList), 3)
+            prioritySkuList[i: i + 3]
+            for i in range(0, len(prioritySkuList) - 2, 3)
         ]
 
         total_offer = len(groupedSkuList) * 45
@@ -142,5 +142,6 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 

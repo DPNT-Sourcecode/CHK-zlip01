@@ -13,7 +13,7 @@ class Basket:
         self.sku_offers = {
             "A": [(5, 200), (3, 130)],
             "B": [(2, 45)],
-            "E": [(2, self.sku_values["B"])]
+            "E": [(2,  (2 * self.sku_values["E"]) + self.sku_values["B"])]
 
         }
 
@@ -41,9 +41,15 @@ class Basket:
         basket_total = 0
 
         for sku_identifier, frequency in basket_map.items():
-            if 
+            if sku_identifier in self.sku_offers:
+                basket_total += self._calculateSkuOffer(sku_identifier)
+            else:
+                basket_total += self.sku_values[sku_identifier] * frequency
 
         return basket_total
+
+    def _calculateSkuOffer(self, sku_identifier):
+        
 
     def getValue(self):
         return self.basket_value
@@ -52,4 +58,5 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 

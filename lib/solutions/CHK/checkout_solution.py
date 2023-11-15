@@ -115,10 +115,16 @@ class Basket:
             sku: freq
             for sku, freq in basket_map.items()
             if sku in self.group_offers
-    }
+        }
+
+        priority_sku = [[sku, self.sku_values[sku]]
+                        for sku in basket_map.keys()
+                        if sku in self.group_offers
+                        ]
+
 
         total_offer = 0
-        groups_in_basket.sort(key=lambda x: x[2], reverse=True)
+        priority_sku.sort(key=lambda x: x[1], reverse=True)
 
         flag = True
         while flag:
@@ -133,4 +139,5 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 

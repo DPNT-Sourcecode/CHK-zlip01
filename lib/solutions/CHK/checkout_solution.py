@@ -112,24 +112,37 @@ class Basket:
 
     def _applyGroupOffers(self, basket_map):
         groups_in_basket = [
-            (sku, freq, self.sku_values[sku])
+            [sku, freq, self.sku_values[sku]]
             for sku, freq in basket_map.items()
             if sku in self.group_offers
         ]
 
         total_offer = 0
-        groups_in_basket.sort(key = lambda x : x[2], reverse=True)
+        groups_in_basket.sort(key=lambda x: x[2], reverse=True)
 
-        while groups_in_basket:
-            a_value, a_sku, a_freq = heapq.heappop(groups_in_basket)
+        i, k, k = 0, 0, 0
 
-            if a_freq >= 3:
-                total_offer += (a_freq // 3) * 45
-                if a_freq % 3 != 0:
-                    heapq.heappush(groups_in_basket, (a_value, a_sku, a_freq % 3))
+        while i < len(groups_in_basket):
+            item_count = 0
+            i_sku, i_freq, i_value = groups_in_basket[i]
+            item_count += i_freq
+            if item_count // 3 >= 1:
+                total_offer += (i_value * (item_count // 3))
+                groups_in_basket[i] = [i_sku, i_freq % 3, i_value]
+
+                continue
 
 
 
+        for i in range(len(groups_in_basket)):
+            item_count = 0
+            i_sku, i_freq, i_value = groups_in_basket[i]
+            item_count += i_freq
+            if item_count // 3 >= 1:
+
+                continue
+            for j in range(i + 1, len(groups_in_basket)):
+                for k in range(j + 1, len(groups_in_basket)):
 
         return total_offer, basket_map
 
@@ -140,4 +153,5 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 

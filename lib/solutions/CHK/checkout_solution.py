@@ -36,10 +36,8 @@ class Basket:
             else:
                 basket_map[sku_identifier] = 1
 
-        if "E" in basket_map:
-            freq = basket_map["E"]
-            if freq >= 2 and "B" in basket_map:
-                basket_map["B"] -= freq // 2
+        self._applyReductiveOffers(basket_map)
+
 
         basket_total = 0
 
@@ -70,9 +68,16 @@ class Basket:
     def getValue(self):
         return self.basket_value
 
+    def _applyReductiveOffers(self, basket_map):
+        if "E" in basket_map:
+            freq = basket_map["E"]
+            if freq >= 2 and "B" in basket_map:
+                basket_map["B"] -= freq // 2
+
 
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 

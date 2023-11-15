@@ -34,10 +34,11 @@ class CheckoutTests(TestCase):
         self.assertEqual(130 + 80, checkout('AAABEE'))
 
     def test_chk_getFFree(self):
-        self.assertEqual(checkout('FFF'), 20)
+        self.assertEqual(checkout('FFFFFF'), 40)
 
     def test_chk_multiple_reductions(self):
-        self.assertEqual(checkout('BEEFFF'),60)
+        self.assertEqual(checkout('BEEFFF'),80 + 20)
+
 
 
 

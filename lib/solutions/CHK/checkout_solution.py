@@ -7,7 +7,8 @@ class Basket:
             "B": 30,
             "C": 20,
             "D": 15,
-            "E": 40
+            "E": 40,
+            "F": 10
         }
 
         self.sku_offers = {
@@ -94,6 +95,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

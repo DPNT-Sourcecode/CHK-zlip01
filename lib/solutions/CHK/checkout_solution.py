@@ -45,5 +45,3 @@ def checkout(sku_string: str) -> int:
     return basket_total
 
     
-
-

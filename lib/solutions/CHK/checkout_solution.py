@@ -55,9 +55,10 @@ class Basket:
                 basket_map[sku_identifier] = 1
 
         basket_map = self._applyReductiveOffers(basket_map)
-        basket_map = self._applyGroupOffers(basket_map)
 
         basket_total = 0
+
+        basket_total, basket_map = self._applyGroupOffers(basket_map)
 
         for sku_identifier, frequency in basket_map.items():
             if sku_identifier in self.sku_offers:
@@ -129,3 +130,4 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+

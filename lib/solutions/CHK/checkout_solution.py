@@ -120,11 +120,15 @@ class Basket:
         priority.sort(key=lambda x: x[1], reverse=True)
 
         prioritySkuList = [
-            sku * freq
+            sku * basket_map[sku]
             for sku, _ in priority
-            for freq in basket_map[sku]
         ]
-        a = prioritySkuList
+        groupedSkuList = [
+            [prioritySkuList[i: i + 3]]
+            for i in range(0, len(prioritySkuList) - 3)
+        ]
+
+        a = groupedSkuList
 
 
     def getValue(self):
@@ -134,6 +138,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

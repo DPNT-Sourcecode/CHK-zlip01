@@ -63,22 +63,16 @@ class Basket:
                 break
 
         if currFreq > 0:
-            total_offer += self.sku_values[currSKU]
+            total_offer += self.sku_values[currSKU]  * currFreq
 
         return total_offer
 
     def _applyReductiveOffers(self, basket_map):
-
-        for sku, skuoffer in self.reductive_offers:
-            if sku in basket_map:
-                best_reductive_offers = sorted(self.reductive_offers[sku], key=lambda x: x[0], reverse=True)
-
-        return basket_map
-
         if "E" in basket_map:
             freq = basket_map["E"]
             if freq >= 2 and "B" in basket_map:
                 basket_map["B"] -= freq // 2
+        return basket_map
 
     def getValue(self):
         return self.basket_value
@@ -89,6 +83,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

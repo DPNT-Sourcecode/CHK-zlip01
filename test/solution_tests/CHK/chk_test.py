@@ -6,6 +6,9 @@ class CheckoutTests(TestCase):
     def test_chk_single_item(self):
         self.assertEqual(checkout('A'), 50)
 
+    def test_chk_two_item(self):
+        self.assertEqual(100, checkout('AA'))
+
     def test_chk_multiple_items(self):
         self.assertEqual(checkout('ABCD'), 115)
 
@@ -26,5 +29,7 @@ class CheckoutTests(TestCase):
 
     def test_chk_multiple_combo_items(self):
         self.assertEqual(130 + 80, checkout('AAABEE'))
+
+
 
 

@@ -128,10 +128,3 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
-
-
-
-
-
-
-

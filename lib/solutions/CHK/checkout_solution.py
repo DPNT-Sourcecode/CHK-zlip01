@@ -1,5 +1,7 @@
 # noinspection PyShadowingBuiltins,PyUnusedLocal
 import heapq
+
+
 class Basket:
     def __init__(self, sku_items: str):
         self.sku_values = {
@@ -114,22 +116,11 @@ class Basket:
 
         for sku, freq in basket_map:
             if sku in self.group_offers:
-                groups_in_basket.append((-self.sku_values[sku], sku, freq))
+                groups_in_basket.append((sku, freq, self.sku_values[sku]))
 
         if len(groups_in_basket) < 3:
             return 0, basket_map
-
-        heapq.heapify(groups_in_basket)
-
-        while len(groups_in_basket) > 3:
-            (a_val, a_sku, a_freq), (b_val, b_sku, b_freq), (c_val, c_sku, c_freq) \
-                = heapq.heappop(), heapq.heappop(), heapq.heappop()
-
-            if a_freq == 0 or b_freq == 0 or c_freq == 0:
-                break
-
-        for _, sku, freq in groups_in_basket:
-            basket_map[sku] = freq
+        groups_in_basket.sort(key=lambda x: x[2], reverse=True)
 
         return total_offer, basket_map
 
@@ -140,6 +131,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

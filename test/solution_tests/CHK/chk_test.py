@@ -39,6 +39,10 @@ class CheckoutTests(TestCase):
     def test_chk_multiple_reductions(self):
         self.assertEqual(checkout('BEEFFF'),80 + 20)
 
+    def test_chk_reductive_single_offer(self):
+        self.assertEqual(checkout('EE'), 80)
+
+
 
 
 

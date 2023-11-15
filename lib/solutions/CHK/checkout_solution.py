@@ -1,4 +1,7 @@
 def checkout(sku_string: str) -> int:
+    if sku_string == "" : return 0
+    
+    
     valid_sku_identifiers = set(['A', 'B', 'C', 'D'])
     sku_string = sku_string.upper()
 

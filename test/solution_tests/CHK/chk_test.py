@@ -13,3 +13,6 @@ class CheckoutTests(TestCase):
 
     def chk_invalid_items(self):
         self.assertEqual(checkout('R'), -1)
+    
+    def chk_no_items(self):
+        self.assertEqual(checkout(''), 0)

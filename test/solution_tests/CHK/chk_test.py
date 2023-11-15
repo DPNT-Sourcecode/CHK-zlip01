@@ -24,5 +24,9 @@ class CheckoutTests(TestCase):
     def test_chk_lowerCase_item(self):
         self.assertEqual(checkout('ABCd'), -1)
 
+    def test_chk_multiple_combo_items(self):
+        self.assertEqual(checkout('AAABBEE'), 130 + 45 + 40)
+
+
 
 

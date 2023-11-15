@@ -13,7 +13,7 @@ class Basket:
         self.sku_offers = {
             "A": [(5, 200), (3, 130)],
             "B": [(2, 45)],
-            "E": [(2, (2 * self.sku_values["E"]) + self.sku_values["B"])]
+            "E": [(2, (-self.sku_values["B"])]
 
         }
 
@@ -71,6 +71,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

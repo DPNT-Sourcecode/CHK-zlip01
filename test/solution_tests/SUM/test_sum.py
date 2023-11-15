@@ -8,6 +8,3 @@ class TestSum(TestCase):
         self.assertEqual(compute(0, 0), 0)
     def test_sum_three(self):
         self.assertEqual(compute(100, 100), 200)
-
-
-

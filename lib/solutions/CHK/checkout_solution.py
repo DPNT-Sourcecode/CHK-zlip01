@@ -116,22 +116,16 @@ class Basket:
         if len(groups_in_basket) < 3:
             return basket_map
 
-        groups_in_basket.sort(key=lambda x: x[2], reverse= True)
+        groups_in_basket.sort(key=lambda x: x[2], reverse=True)
+
 
 
         return basket_map
+
     def getValue(self):
         return self.basket_value
-
-
 
 
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
-
-
-
-
-
-

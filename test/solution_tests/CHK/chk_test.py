@@ -46,6 +46,14 @@ class CheckoutTests(TestCase):
         self.assertEqual(checkout('AAAMMNNNNNNRRR'),
                          130 + (6 * 40) + 150)
 
+    def test_chk_group_offer_1(self):
+        self.assertEqual(checkout('STX'), 45)
+
+    def test_chk_group_offer_2(self):
+        self.assertEqual(checkout('STXYZ'), 37)
+
+    def test_chk_group_offer_3(self):
+        self.assertEqual(checkout('STX'), 45)
 
 
 

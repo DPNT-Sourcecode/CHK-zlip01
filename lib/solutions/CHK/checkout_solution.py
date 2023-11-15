@@ -31,6 +31,8 @@ class Basket:
             "U": [(3, ("U", 1))]
         }
 
+        self.group_offers = {"S", "T", "X", "Y", "Z"}
+
         self.basket_value = self._calculateBasketValue(sku_items)
 
     def _calculateBasketValue(self, sku_items):
@@ -53,6 +55,7 @@ class Basket:
                 basket_map[sku_identifier] = 1
 
         basket_map = self._applyReductiveOffers(basket_map)
+        basket_map = self._applyGroupOffers(basket_map)
 
         basket_total = 0
 
@@ -94,8 +97,8 @@ class Basket:
 
                         if applied_sku == reductive_sku:
                             reduction = (
-                                basket_map[applied_sku] //
-                                (required_freq + reduction)
+                                    basket_map[applied_sku] //
+                                    (required_freq + reduction)
                             )
                         else:
                             reduction = basket_map[reductive_sku] // required_freq
@@ -104,13 +107,19 @@ class Basket:
 
         return basket_map
 
+    def _applyGroupOffers(self, basket_map):
+
+
     def getValue(self):
         return self.basket_value
+
+
 
 
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

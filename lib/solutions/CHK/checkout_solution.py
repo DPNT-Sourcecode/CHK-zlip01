@@ -17,9 +17,9 @@ class Basket:
 
         }
 
-        self.basket_value = self._calulateBasketValue(sku_items)
+        self.basket_value = self._calculateBasketValue(sku_items)
 
-    def _calulateBasketValue(self, sku_items):
+    def _calculateBasketValue(self, sku_items):
         if sku_items == "":
             return 0
 
@@ -38,27 +38,10 @@ class Basket:
             else:
                 basket_map[sku_identifier] = 1
 
-        # Maps the SKU identifiers to their values
-        value_map = {
-            "A": 50,
-            "B": 30,
-            "C": 20,
-            "D": 15
-        }
-
         basket_total = 0
 
         for sku_identifier, frequency in basket_map.items():
-            if sku_identifier == "A":
-                if frequency >= 3:
-                    basket_total += (frequency // 3) * 130
-                    frequency = frequency % 3
-            elif sku_identifier == "B":
-                if frequency >= 2:
-                    basket_total += (frequency // 2) * 45
-                    frequency = frequency % 2
-
-            basket_total += frequency * value_map[sku_identifier]
+            if 
 
         return basket_total
 
@@ -69,3 +52,4 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+

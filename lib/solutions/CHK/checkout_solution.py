@@ -12,12 +12,21 @@ def checkout(sku_string: str) -> int:
             basket_map[sku] = 1
     
     # Maps the SKU identifiers to their values
-
-    value_map = {}
-    
+    value_map = {
+        "A" : 50,
+        "B": 30,
+        "C": 20,
+        "D": 15
+    }
 
     basket_total = 0
 
     for sku_identifier, frequency in basket_map.items():
-        if sku_identifier != "A" and sk
+        if sku_identifier == "A":
+            basket_map += 
+        elif sku_identifier == "B":
+            basket_map += 
+        elsE"
+        
+    
 

@@ -56,14 +56,15 @@ class Basket:
         best_sku_offers = sorted(self.sku_offers[currSKU], key=lambda x: x[0], reverse=True)
 
         for offer_frequency, offer_value in best_sku_offers:
-            if offer_frequency >= currFreq:
+            if offer_frequency <= currFreq:
                 total_offer += (currFreq // offer_frequency) * offer_value
                 currFreq %= offer_frequency
+
             if currFreq == 0:
                 break
 
         if currFreq > 0:
-            total_offer += self.sku_values[currSKU]  * currFreq
+            total_offer += self.sku_values[currSKU] * currFreq
 
         return total_offer
 
@@ -78,11 +79,10 @@ class Basket:
         return self.basket_value
 
 
-
-
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

@@ -70,7 +70,16 @@ class Basket:
         return total_offer
 
     def _applyReductiveOffers(self, basket_map):
+        for reductive_sku in self.reductive_offers:
+            if reductive_sku in basket_map:
+                best_reductive_offers = sorted(self.reductive_offers[reductive_sku], key=lambda x: x[0], reverse=True)
 
+                for required_freq, offer in best_reductive_offers:
+                    if required_freq <= basket_map[reductive_sku]:
+
+
+
+        return basket_map
 
     def getValue(self):
         return self.basket_value
@@ -79,3 +88,4 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+

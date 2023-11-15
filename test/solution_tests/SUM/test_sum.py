@@ -1,7 +1,12 @@
-from solutions.SUM import compute
-import unittest
+from unittest import TestCase
+from solutions.SUM.sum_solution import compute
 
-class TestSum(unittest.TestCase):
-    def test_sum(self):
-        self.assertEqual(compute(5, 5) == 10)
+class TestSum(TestCase):
+    def test_sum_one(self):
+        self.assertEqual(compute(10, 10), 20)
+    def test_sum_one(self):
+        self.assertEqual(compute(10, 10), 20)
+    def test_sum_one(self):
+        self.assertEqual(compute(10, 10), 20)
+
 

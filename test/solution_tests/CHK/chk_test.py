@@ -33,7 +33,6 @@ class CheckoutTests(TestCase):
     def test_chk_multiple_combo_items(self):
         self.assertEqual(130 + 80, checkout('AAABEE'))
 
-
-
-
+    def test_chk_getFFree(self):
+        self.assertEqual(checkout('FFF'), 20)
 

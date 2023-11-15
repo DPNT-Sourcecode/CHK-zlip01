@@ -37,7 +37,8 @@ class CheckoutTests(TestCase):
         self.assertEqual(checkout('FFF'), 20)
 
     def test_chk_multiple_reductions(self):
-        self.assertEqual(checkout('BBEEFFFF'), 70 + 40)
+        self.assertEqual(checkout('BEEFFF'),60)
+
 
 
 

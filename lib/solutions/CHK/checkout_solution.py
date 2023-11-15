@@ -79,7 +79,7 @@ class Basket:
                         applied_sku, reduction = offer
                         if applied_sku == reductive_sku:
                             reduction = (
-                                basket_map[reductive_sku] //
+                                basket_map[applied_sku] //
                                 (required_freq + reduction)
                             )
 
@@ -94,6 +94,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

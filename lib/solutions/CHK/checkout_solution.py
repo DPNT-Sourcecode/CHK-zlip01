@@ -111,36 +111,26 @@ class Basket:
         return basket_map
 
     def _applyGroupOffers(self, basket_map):
-        groups_in_basket = {
-            sku: freq
-            for sku, freq in basket_map.items()
-            if sku in self.group_offers
-        }
-
-        priority_sku = [
-            [sku, self.sku_values[sku]]
-            for sku in basket_map.keys()
-            if sku in self.group_offers
-        ]
-
-        total_offer = 0
-
-        flag = True
+        itemGroups = []
+        priority = [[sku, self.sku_values[sku]]
+                    for sku in basket_map.item()
+                    if sku in self.group_offers
+                    ]
+        flag  = True
+        currGroup = []
         while flag:
-            priority_sku.sort(key=lambda x: x[1], reverse=True)
             flag = False
-            arr = []
-            for i in range(len(priority_sku)):
-                sku, _ = priority_sku[i]
-                if groups_in_basket[sku] >= 3:
-                    total_offer += (groups_in_basket[sku] // 3) * 45
-                    groups_in_basket[sku] %= 3
-                    flag = True
-                    break
-                else:
-                    arr += []
+            priority.sort(key=lambda x: x[1], reverse=True)
+            if len(currGroup) == 3:
+                itemGroups.append(currGroup)
+                currGroup.clear()
+                
+            for currSku, _ in priority:
+                if basket_map[currSku] > 0:
 
-        return total_offer, basket_map
+                else:
+                    continue
+
 
     def getValue(self):
         return self.basket_value
@@ -149,6 +139,7 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
 

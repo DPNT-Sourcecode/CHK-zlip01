@@ -117,18 +117,28 @@ class Basket:
             if sku in self.group_offers
         }
 
-        priority_sku = [[sku, self.sku_values[sku]]
-                        for sku in basket_map.keys()
-                        if sku in self.group_offers
-                        ]
-
+        priority_sku = [
+            [sku, self.sku_values[sku]]
+            for sku in basket_map.keys()
+            if sku in self.group_offers
+        ]
 
         total_offer = 0
-        priority_sku.sort(key=lambda x: x[1], reverse=True)
 
         flag = True
         while flag:
-
+            priority_sku.sort(key=lambda x: x[1], reverse=True)
+            flag = False
+            arr = []
+            for i in range(len(priority_sku)):
+                sku, _ = priority_sku[i]
+                if groups_in_basket[sku] >= 3:
+                    total_offer += (groups_in_basket[sku] // 3) * 45
+                    groups_in_basket[sku] %= 3
+                    flag = True
+                    break
+                else:
+                    arr += []
 
         return total_offer, basket_map
 
@@ -139,5 +149,6 @@ class Basket:
 def checkout(sku_string: str) -> int:
     basket = Basket(sku_string)
     return basket.getValue()
+
 
 
